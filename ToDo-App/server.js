@@ -1,9 +1,13 @@
    const http = require('http');
 
    const server = http.createServer((req,res)=>{
-    console.log({res,req})
-   
-    res.end("welcome to todo app dfvdsfsdffed")
+    // console.log({res,req})
+    if (req.url === '/todos' && req.method ==="GET"){
+        res.end('all todos here')
+}
+else if ( req.url === '/todos/lubna' && req.method === 'post'.toUpperCase()) {
+    res.end('i love you ')
+}
 
    })
 
