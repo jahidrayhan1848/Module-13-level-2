@@ -1,45 +1,29 @@
   
-  const data = [
-  {
-    "id": 1,
-    "name": "Laptop",
-    "price": 1200
-  },
-  {
-    "id": 2,
-    "name": "Phone",
-    "price": 800
-  },
-  {
-    "id": 3,
-    "name": "Smartwatch",
-    "price": 300
-  },
-  {
-    "id": 4,
-    "name": "Tablet",
-    "price": 1200
-  },
-  {
-    "id": 5,
-    "name": "Monitor",
-    "price": 400
-  }
-]
-
+  
   
   
   const http = require('http');
-const { json } = require('stream/consumers');
+
+  const path = require('path');
+
+  const fs = require ('fs')
+
+  const pathName= path.join(__dirname,"./todo-data/todo.json");
+  console.log(pathName)
+  
+
+
+
 
    const server = http.createServer((req,res)=>{
-    // console.log({res,req})
+   
     if (req.url === '/todos' && req.method ==="GET"){
 
+       const data =fs.readFileSync(pathName,{encoding:"utf-8"})
         res.writeHead(201,{
             "content-type" : "application/json"
         })
-        res.end( JSON.stringify(data))
+        res.end( data)
 }
 else if ( req.url === '/todos/lubna' && req.method === 'post'.toUpperCase()) {
 
